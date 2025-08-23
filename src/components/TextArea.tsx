@@ -1,8 +1,7 @@
-import * as React from "react";
 import { TextareaAutosize as BaseTextareaAutosize } from "@mui/base/TextareaAutosize";
 import { styled } from "@mui/system";
 
-export default function Textarea() {
+export default function Textarea({ item, onTextEnter }) {
   const blue = {
     100: "#DAECFF",
     200: "#b6daff",
@@ -28,12 +27,13 @@ export default function Textarea() {
   const TextareaStyled = styled(BaseTextareaAutosize)(
     ({ theme }) => `
     box-sizing: border-box;
-    width: 320px;
+    width: 30%;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
     padding: 12px;
+    margin: 10px;
     padding-bottom: 30px;
     border-radius: 12px 12px 0 12px;
     color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
@@ -63,5 +63,14 @@ export default function Textarea() {
   `
   );
 
-  return <TextareaStyled aria-label="empty textarea" placeholder="Empty" />;
+  return (
+    <TextareaStyled
+      aria-label="empty textarea"
+      placeholder="Empty"
+      defaultValue={item.value}
+      onBlur={(value) => {
+        onTextEnter(value.target.value, item.index);
+      }}
+    />
+  );
 }

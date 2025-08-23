@@ -1,11 +1,11 @@
-import Dock from "../components/Dock";
-import Textarea from "../components/TextArea";
+import { WorkSpace } from "../components/WorkSpace";
 
 const ChaoticNotes = () => {
   return (
     <>
-      <Dock />
-      <Textarea />
+      <div style={{ margin: "20px" }}>
+        <WorkSpace />
+      </div>
     </>
   );
 };

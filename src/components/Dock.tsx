@@ -1,7 +1,9 @@
-const Dock = () => {
+const Dock = ({ createNewNote }: { createNewNote: () => unknown }) => {
   return (
     <>
-      <div>create new +</div>
+      <div className="font-bold text-3xl" onClick={createNewNote}>
+        create new +
+      </div>
     </>
   );
 };
